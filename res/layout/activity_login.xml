@@ -16,7 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -28,46 +28,41 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/login_email"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword" >
-
-        <requestFocus />
-    </EditText>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox1"
-        android:layout_alignRight="@+id/checkBox1"
-        android:layout_below="@+id/checkBox1"
-        android:layout_marginTop="24dp"
-        android:text="Login" />
+        android:inputType="textPassword" />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/login_remember_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText2"
-        android:layout_marginLeft="73dp"
-        android:layout_marginTop="32dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/login_password"
         android:text="Remember me" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/login_register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/button1"
+        android:layout_alignLeft="@+id/login_btn"
+        android:layout_alignRight="@+id/login_btn"
+        android:layout_below="@+id/login_remember_me"
+        android:layout_marginTop="67dp"
         android:text="Register" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login_remember_me"
+        android:layout_alignRight="@+id/login_remember_me"
+        android:layout_below="@+id/login_remember_me"
+        android:text="Login" />
 
 </RelativeLayout>
