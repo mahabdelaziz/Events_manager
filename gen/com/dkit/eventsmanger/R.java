@@ -8,56 +8,74 @@
 package com.dkit.eventsmanger;
 
 public final class R {
+    public static final class array {
+        public static final int courses_array=0x7f050001;
+        public static final int years_array=0x7f050000;
+    }
     public static final class attr {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int button1=0x7f07000d;
-        public static final int editText1=0x7f070006;
-        public static final int editText2=0x7f070007;
-        public static final int editText3=0x7f070008;
-        public static final int editText4=0x7f070011;
-        public static final int imageView1=0x7f070015;
-        public static final int item_event_attending=0x7f070018;
-        public static final int item_event_date=0x7f070017;
-        public static final int item_event_edit=0x7f070019;
-        public static final int item_event_mark_past=0x7f07001a;
-        public static final int item_event_name=0x7f070016;
-        public static final int item_event_remove=0x7f07001b;
-        public static final int login_btn=0x7f070005;
-        public static final int login_email=0x7f070001;
-        public static final int login_password=0x7f070002;
-        public static final int login_register_btn=0x7f070004;
-        public static final int login_remember_me=0x7f070003;
-        public static final int menu_settings=0x7f070020;
-        public static final int radio0=0x7f07001e;
-        public static final int radio1=0x7f07001f;
-        public static final int radio2=0x7f07001d;
-        public static final int radioGroup1=0x7f07001c;
-        public static final int scrollView1=0x7f07000e;
-        public static final int spinner1=0x7f07000a;
-        public static final int spinner2=0x7f07000c;
-        public static final int textView1=0x7f070000;
-        public static final int textView2=0x7f070009;
-        public static final int textView3=0x7f07000b;
-        public static final int textView4=0x7f07000f;
-        public static final int textView5=0x7f070010;
-        public static final int textView6=0x7f070012;
-        public static final int textView7=0x7f070013;
-        public static final int textView8=0x7f070014;
+        public static final int button1=0x7f080024;
+        public static final int create_event=0x7f08002b;
+        public static final int editText1=0x7f080025;
+        public static final int editText2=0x7f080011;
+        public static final int editText3=0x7f080014;
+        public static final int editText4=0x7f080016;
+        public static final int event_create_btn=0x7f08001b;
+        public static final int event_create_name=0x7f080010;
+        public static final int event_view_name=0x7f080023;
+        public static final int imageView1=0x7f08001c;
+        public static final int item_event_attending=0x7f08001f;
+        public static final int item_event_date=0x7f08001e;
+        public static final int item_event_edit=0x7f080020;
+        public static final int item_event_mark_past=0x7f080021;
+        public static final int item_event_name=0x7f08001d;
+        public static final int item_event_remove=0x7f080022;
+        public static final int login_btn=0x7f080005;
+        public static final int login_email=0x7f080001;
+        public static final int login_password=0x7f080002;
+        public static final int login_register_btn=0x7f080004;
+        public static final int login_remember_me=0x7f080003;
+        public static final int menu_settings=0x7f08002a;
+        public static final int my_events=0x7f08000e;
+        public static final int radio0=0x7f080028;
+        public static final int radio1=0x7f080029;
+        public static final int radio2=0x7f080027;
+        public static final int radioGroup1=0x7f080026;
+        public static final int register_course=0x7f08000c;
+        public static final int register_finish=0x7f08000d;
+        public static final int register_year=0x7f08000a;
+        public static final int regsiter_email=0x7f080006;
+        public static final int regsiter_password=0x7f080007;
+        public static final int regsiter_re_password=0x7f080008;
+        public static final int scrollView1=0x7f08000f;
+        public static final int search_event=0x7f08002c;
+        public static final int spinner1=0x7f080012;
+        public static final int spinner2=0x7f08001a;
+        public static final int textView1=0x7f080000;
+        public static final int textView2=0x7f080009;
+        public static final int textView3=0x7f08000b;
+        public static final int textView4=0x7f080013;
+        public static final int textView5=0x7f080015;
+        public static final int textView6=0x7f080017;
+        public static final int textView7=0x7f080018;
+        public static final int textView8=0x7f080019;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
         public static final int activity_register=0x7f030001;
-        public static final int create_event=0x7f030002;
-        public static final int event_item=0x7f030003;
-        public static final int event_view=0x7f030004;
-        public static final int search_activity=0x7f030005;
+        public static final int all_events=0x7f030002;
+        public static final int create_event=0x7f030003;
+        public static final int event_item=0x7f030004;
+        public static final int event_view=0x7f030005;
+        public static final int search_activity=0x7f030006;
     }
     public static final class menu {
-        public static final int activity_login=0x7f060000;
+        public static final int activity_login=0x7f070000;
+        public static final int main=0x7f070001;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -75,10 +93,10 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppTheme=0x7f060001;
     }
 }

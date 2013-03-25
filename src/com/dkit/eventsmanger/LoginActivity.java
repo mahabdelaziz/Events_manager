@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +36,7 @@ public class LoginActivity extends Activity {
 		email = (TextView) findViewById(R.id.login_email);
 		password = (TextView) findViewById(R.id.login_password);
 		loginBtn = (Button) findViewById(R.id.login_btn);
+		registerBtn = (Button) findViewById(R.id.login_register_btn);
 		SharedPreferences settings = getSharedPreferences("main", 0);
 		Log.d("login", settings.getString("token", "noLogged"));
 		loginBtn.setOnClickListener(new OnClickListener() {
@@ -42,7 +44,21 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				new LoginTask().execute();
+				if(arg0 == loginBtn)
+					new LoginTask().execute();
+				
+			}
+		});
+		registerBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stubelse {
+				Intent intent = new Intent(LoginActivity.this,
+						RegisterActivity.class);
+				startActivity(intent);
+				
+				
 			}
 		});
 	} 
