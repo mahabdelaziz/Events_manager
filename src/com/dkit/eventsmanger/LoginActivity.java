@@ -23,9 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
-	ProgressDialog pDialog;
-	JSONParser jsonParser = new JSONParser();
-	final String LOGIN_URL = "http://events-android.aws.af.cm/users.php";
 	TextView email, password;
 	Button loginBtn, registerBtn;
 
@@ -69,6 +66,10 @@ public class LoginActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
+
+	ProgressDialog pDialog;
+	JSONParser jsonParser = new JSONParser();
+	final String LOGIN_URL = "http://events-android.aws.af.cm/users.php";
 
 	class LoginTask extends AsyncTask<String, String, String> {
 		boolean login = false;

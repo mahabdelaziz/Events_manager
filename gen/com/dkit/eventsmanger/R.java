@@ -19,8 +19,7 @@ public final class R {
     }
     public static final class id {
         public static final int button1=0x7f080024;
-        public static final int create_event=0x7f08002b;
-        public static final int editText1=0x7f080025;
+        public static final int create_event=0x7f08002c;
         public static final int editText2=0x7f080011;
         public static final int editText3=0x7f080014;
         public static final int editText4=0x7f080016;
@@ -39,7 +38,7 @@ public final class R {
         public static final int login_password=0x7f080002;
         public static final int login_register_btn=0x7f080004;
         public static final int login_remember_me=0x7f080003;
-        public static final int menu_settings=0x7f08002a;
+        public static final int menu_settings=0x7f08002b;
         public static final int my_events=0x7f08000e;
         public static final int radio0=0x7f080028;
         public static final int radio1=0x7f080029;
@@ -52,7 +51,9 @@ public final class R {
         public static final int regsiter_password=0x7f080007;
         public static final int regsiter_re_password=0x7f080008;
         public static final int scrollView1=0x7f08000f;
-        public static final int search_event=0x7f08002c;
+        public static final int search_btn=0x7f08002a;
+        public static final int search_event=0x7f08002d;
+        public static final int search_name=0x7f080025;
         public static final int spinner1=0x7f080012;
         public static final int spinner2=0x7f08001a;
         public static final int textView1=0x7f080000;

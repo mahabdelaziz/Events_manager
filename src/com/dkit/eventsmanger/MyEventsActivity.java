@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,9 +25,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class MyEventsActivity extends ListActivity {
-	ProgressDialog pDialog;
-	JSONParser jsonParser = new JSONParser();
-	final String LOGIN_URL = "http://10.0.2.2/events/events.php";
+	
 	String token ; 
 	ArrayList<HashMap<String, String>> eventsList;
 	
@@ -37,7 +36,11 @@ public class MyEventsActivity extends ListActivity {
 		this.setListAdapter(new SimpleAdapter(MyEventsActivity.this, eventsList, R.layout.event_item,  null, null));
 		SharedPreferences settings = getSharedPreferences("main", 0);
 		token = settings.getString("token", "noLogged");
-		new LoginTask().execute();
+		
+		Intent intent = getIntent();
+//		int type = intent.getIntExtra("type", -1);
+//		if(type == -1 )
+		new LoginTask().execute(intent.getStringExtra("type"), intent.getStringExtra("query"));
 	}
 	
 	
@@ -53,10 +56,13 @@ public class MyEventsActivity extends ListActivity {
 		return false;
 	}
 	
+	ProgressDialog pDialog;
+	JSONParser jsonParser = new JSONParser();
+	final String LOGIN_URL = "http://10.0.2.2/events/events.php";
 	
 	class LoginTask extends AsyncTask<String, String, String> {
 		boolean login = false;
-
+ 
 		
 		@Override
 		protected void onPreExecute() {
@@ -67,12 +73,14 @@ public class MyEventsActivity extends ListActivity {
 			pDialog.setCancelable(true);
 			pDialog.show();
 		}
-
+		
+		@Override
 		protected String doInBackground(String... args) {
 			
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("type", "all"));
-			params.add(new BasicNameValuePair("token", "bdbe1e68895adb037646c60ab5850674"));
+			params.add(new BasicNameValuePair("type", args[0]));
+			params.add(new BasicNameValuePair("name", args[1]));
+			params.add(new BasicNameValuePair("token", "4167d27aebe5b9cb0e6b765563f85876"));
 			
 			JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "GET",
 					params);
@@ -95,7 +103,7 @@ public class MyEventsActivity extends ListActivity {
 		}
 
 		protected void onPostExecute(String file_url) {
-			MyEventsActivity.this.setListAdapter(new SimpleAdapter(MyEventsActivity.this, eventsList, R.layout.event_item,  new String[]{ "name" }, new int[]{R.id.item_event_name}));
+			MyEventsActivity.this.setListAdapter(new EventsItem(MyEventsActivity.this, eventsList, R.layout.event_item,  new String[]{ "name" }, new int[]{R.id.item_event_name}));
 			pDialog.dismiss();
 		}
 
