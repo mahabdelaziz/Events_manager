@@ -20,8 +20,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int button1=0x7f080027;
-        public static final int create_event=0x7f08002f;
+        public static final int create_event=0x7f080030;
         public static final int event_create_btn=0x7f08001c;
         public static final int event_create_building=0x7f080012;
         public static final int event_create_date=0x7f080016;
@@ -31,13 +30,14 @@ public final class R {
         public static final int event_create_room=0x7f080014;
         public static final int event_create_space=0x7f080011;
         public static final int event_create_time=0x7f080017;
-        public static final int event_view_date=0x7f080025;
-        public static final int event_view_desc=0x7f080026;
-        public static final int event_view_name=0x7f080024;
+        public static final int event_view_date=0x7f080026;
+        public static final int event_view_desc=0x7f080027;
+        public static final int event_view_name=0x7f080025;
         public static final int imageView1=0x7f08001d;
         public static final int item_event_attending=0x7f080020;
         public static final int item_event_date=0x7f08001f;
         public static final int item_event_edit=0x7f080021;
+        public static final int item_event_id=0x7f080024;
         public static final int item_event_mark_past=0x7f080022;
         public static final int item_event_name=0x7f08001e;
         public static final int item_event_remove=0x7f080023;
@@ -46,12 +46,12 @@ public final class R {
         public static final int login_password=0x7f080002;
         public static final int login_register_btn=0x7f080004;
         public static final int login_remember_me=0x7f080003;
-        public static final int menu_settings=0x7f08002e;
+        public static final int menu_settings=0x7f08002f;
         public static final int my_events=0x7f08000e;
-        public static final int radio0=0x7f08002b;
-        public static final int radio1=0x7f08002c;
-        public static final int radio2=0x7f08002a;
-        public static final int radioGroup1=0x7f080029;
+        public static final int radio0=0x7f08002c;
+        public static final int radio1=0x7f08002d;
+        public static final int radio2=0x7f08002b;
+        public static final int radioGroup1=0x7f08002a;
         public static final int register_course=0x7f08000c;
         public static final int register_finish=0x7f08000d;
         public static final int register_year=0x7f08000a;
@@ -59,9 +59,10 @@ public final class R {
         public static final int regsiter_password=0x7f080007;
         public static final int regsiter_re_password=0x7f080008;
         public static final int scrollView1=0x7f08000f;
-        public static final int search_btn=0x7f08002d;
-        public static final int search_event=0x7f080030;
-        public static final int search_name=0x7f080028;
+        public static final int search_btn=0x7f08002e;
+        public static final int search_event=0x7f080031;
+        public static final int search_name=0x7f080029;
+        public static final int sign_up=0x7f080028;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080009;
         public static final int textView3=0x7f08000b;

@@ -21,15 +21,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.*;
 
 public class MyEventsActivity extends ListActivity {
 
 	String token;
 	ArrayList<HashMap<String, String>> eventsList;
-	String Qtype,query ;
+	String Qtype, query;
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		eventsList = new ArrayList<HashMap<String, String>>();
@@ -44,18 +45,17 @@ public class MyEventsActivity extends ListActivity {
 		// if(type == -1 )
 		Qtype = intent.getStringExtra("type");
 		query = intent.getStringExtra("query");
-//		new LoginTask().execute(intent.getStringExtra("type"),
-//				intent.getStringExtra("query"));
+		
 	}
 
 	@Override
 	protected void onResume() {
 		MyEventsActivity.this.setListAdapter(null);
-		new LoginTask().execute(Qtype,
-				query);
+		new LoginTask().execute(Qtype, query);
 		Log.d("data", "OnResume");
 		super.onResume();
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -83,7 +83,7 @@ public class MyEventsActivity extends ListActivity {
 
 	ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
-	final String LOGIN_URL = URLs.url+"/events.php";
+	final String LOGIN_URL = URLs.url + "/events.php";
 
 	class LoginTask extends AsyncTask<String, String, String> {
 		boolean login = false;
@@ -98,7 +98,7 @@ public class MyEventsActivity extends ListActivity {
 			pDialog.show();
 			eventsList.clear();
 		}
-
+ 
 		@Override
 		protected String doInBackground(String... args) {
 
@@ -109,6 +109,7 @@ public class MyEventsActivity extends ListActivity {
 			Log.d("MYTOKEN", token);
 			JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "GET",
 					params);
+			Log.d("url", params.toString());
 			Log.d("json", json.toString());
 			try {
 				JSONArray events = json.getJSONArray("events");
@@ -116,7 +117,8 @@ public class MyEventsActivity extends ListActivity {
 					HashMap<String, String> map = new HashMap<String, String>();
 					JSONObject event = events.getJSONObject(i);
 					map.put("name", event.getString("name"));
-					Log.d("data", event.getString("name"));
+					map.put("id", event.getString("id"));
+//					Log.d("data", event.getString("name"));
 					// the rest goes here
 					eventsList.add(map);
 
@@ -128,12 +130,13 @@ public class MyEventsActivity extends ListActivity {
 		}
 
 		protected void onPostExecute(String file_url) {
-			
+
 			MyEventsActivity.this
 					.setListAdapter(new EventsItem(MyEventsActivity.this,
 							eventsList, R.layout.event_item,
-							new String[] { "name" },
-							new int[] { R.id.item_event_name }));
+							new String[] { "name", "id" },
+							new int[] { R.id.item_event_name, R.id.item_event_id }));
+//			
 			pDialog.dismiss();
 		}
 
