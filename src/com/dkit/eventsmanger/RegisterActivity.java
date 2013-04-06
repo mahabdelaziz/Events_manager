@@ -8,6 +8,8 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.dkit.eventsmanger.asynctasks.URLs;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -27,7 +29,7 @@ public class RegisterActivity extends Activity{
 	Spinner year, courseName;
 	ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
-	final String LOGIN_URL = "http://events-android.aws.af.cm/users.php";
+	final String LOGIN_URL = URLs.url+"/users.php";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

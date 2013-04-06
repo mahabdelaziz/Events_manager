@@ -17,4 +17,18 @@
         <item>3rd Year</item>
         <item>4th Year</item>
     </string-array>
+    <string-array name="departments_array">
+       <item>Department 1</item>
+       <item>Department 2</item>
+       <item>Department 3</item>
+       <item>Department 4</item>
+       <item>Department 5</item>
+    </string-array>
+    <string-array name="building_array">
+       <item>Building 1</item>
+       <item>Building 2</item>
+       <item>Building 3</item>
+       <item>Building 4</item>
+       <item>Building 5</item>
+    </string-array>
 </resources>

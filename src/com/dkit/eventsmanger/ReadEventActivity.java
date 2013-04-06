@@ -7,6 +7,8 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.dkit.eventsmanger.asynctasks.URLs;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -26,8 +28,8 @@ public class ReadEventActivity extends Activity {
 
 	ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
-	final String LOGIN_URL = "http://10.0.2.2/events/events.php";
-	String name = "";
+	final String LOGIN_URL = URLs.url+"/events.php";
+	String name, date, descioption ;
 	class LoginTask extends AsyncTask<String, String, String> {
 		boolean login = false;
 
@@ -65,7 +67,9 @@ public class ReadEventActivity extends Activity {
 				if (json.getInt("status") != 200) {
 					Log.d("Login", "Error");
 				} else {
-					name = json.getJSONObject("event").getString("created_at");
+					name = json.getJSONObject("event").getString("name");
+					date = json.getJSONObject("event").getString("date_time");
+					descioption = json.getJSONObject("event").getString("description");
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -81,8 +85,13 @@ public class ReadEventActivity extends Activity {
 		protected void onPostExecute(String file_url) {
 			// dismiss the dialog once done
 			pDialog.dismiss();
-			TextView tv= (TextView)ReadEventActivity.this.findViewById(R.id.event_view_name);
-			tv.setText(name);
+			TextView nameView= (TextView)ReadEventActivity.this.findViewById(R.id.event_view_name);
+			TextView dateView= (TextView)ReadEventActivity.this.findViewById(R.id.event_view_date);
+			TextView descView= (TextView)ReadEventActivity.this.findViewById(R.id.event_view_desc);
+			
+			nameView.append( ":" + name);
+			nameView.append( ":" + date);
+			nameView.setText(descioption);
 		}
 
 	}

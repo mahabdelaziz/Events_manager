@@ -8,6 +8,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.dkit.eventsmanger.asynctasks.URLs;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -41,24 +43,23 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				if(arg0 == loginBtn)
+				if (arg0 == loginBtn)
 					new LoginTask().execute();
-				
+
 			}
 		});
 		registerBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stubelse {
 				Intent intent = new Intent(LoginActivity.this,
 						RegisterActivity.class);
 				startActivity(intent);
-				
-				
+
 			}
 		});
-	} 
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,10 +67,11 @@ public class LoginActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
-
+  
 	ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
-	final String LOGIN_URL = "http://events-android.aws.af.cm/users.php";
+	final String LOGIN_URL = URLs.url +
+			"/users.php";
 
 	class LoginTask extends AsyncTask<String, String, String> {
 		boolean login = false;
@@ -97,26 +99,29 @@ public class LoginActivity extends Activity {
 			params.add(new BasicNameValuePair("type", "login"));
 			params.add(new BasicNameValuePair("email", emailStr));
 			params.add(new BasicNameValuePair("password", passwordStr));
- 
+
 			JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "GET",
 					params);
-			Log.d("here", "here");
+			Log.d("json", json.toString());
+//			Log.d("here", "here");
 			try {
 				if (json.getString("status").compareTo("404") == 0) {
-					Log.d("Login", "Login 404");
+					login = false;
 				} else {
 					SharedPreferences settings = getSharedPreferences("main", 0);
 					SharedPreferences.Editor editor = settings.edit();
 					editor.putString("token", json.getString("token"));
 					editor.commit();
-					Log.d("Login", "Login 200");
+					String token =  json.getString("token");
+					Log.d("Token", token);
+					
+					login = true;
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			Log.d("Create Response", json.toString());
 			return null;
 		}
 
@@ -125,7 +130,14 @@ public class LoginActivity extends Activity {
 		 * **/
 		protected void onPostExecute(String file_url) {
 			// dismiss the dialog once done
+
 			pDialog.dismiss();
+			if (login) {
+				Intent i = new Intent(LoginActivity.this,
+						MyEventsActivity.class);
+				i.putExtra("type", "all");
+				startActivity(i);
+			}
 		}
 
 	}
